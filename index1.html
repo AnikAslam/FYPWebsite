@@ -1,0 +1,525 @@
+<!Doctype html>
+<html>
+<head>
+
+	<title>Guide Us | Web Application </title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<!-- Main Style Sheet -->
+	<link rel="stylesheet" href="style.css" /> 
+
+
+
+</head>
+<body>
+
+	<!-- Login Dialog -->
+	<dialog id="loginDialog" class="mdl-dialog">
+			<center><p id="signin">Sign In / Sign Up</p></center>
+				<div class="mdl-dialog__content">
+						<p id="loginError"></p>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="loginEmail">
+						<label class="mdl-textfield__label" for="sample3">Email</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="Password" id="loginPassword">
+						<label class="mdl-textfield__label" for="sample3">Password</label>
+					</div>
+					<center><a href="#" id="resetPass" onclick="resetPass()">Forget Password</a></center>
+				</div>
+				<div class="mdl-dialog__actions">
+					<!-- Colored raised button -->
+						<button id="loginBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+						Sign In
+						</button>
+						<button id="signUpBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+						Sign Up
+						</button>
+					<div id="loginProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+				</div>
+	</dialog>
+	
+	<div id="spinner" class="login-cover">
+		<!-- MDL Spinner Component -->
+		<div class="page-loader mdl-spinner mdl-js-spinner is-active"></div>
+	</div>
+	
+	
+	<!-- Main Page Content -->
+	<div class="mdl-layout mdl-js-layout">
+		<header class="mdl-layout__header">
+			<div class="mdl-layout-icon"></div>
+				<div class="mdl-layout__header-row">
+					<span class="mdl-layout__title">GUIDE US</span>
+				<div class="mdl-layout-spacer"></div>
+						<nav class="mdl-navigation">
+							<!-- Colored raised button -->
+							<button id="signOutBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+								Sign Out  <i class="button-right-icon material-icons">account_circle</i>
+							</button>
+						</nav>
+			</div>
+		</header>
+		
+		<!-- Add Store Button -->
+		<div id="addBtn" >
+		<button class="mdl-button mdl-js-button mdl-button--fab  mdl-js-ripple-effect mdl-button--colored">
+			<i class="material-icons">add</i>
+		</button>
+		<p id="textAddStore">Add Store</p>
+		</div>
+		
+		<!-- Table Store Information -->
+		<table id="tableStore" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		<thead id="tableHead">
+			<tr>
+				<th id="heading" style="text-align:center;" colspan="2" class="mdl-data-table__cell--non-numeric" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Store Information</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"  style="text-align:Right;" id="editStore" >Edit Store</a></th>
+				
+			</tr>
+		</thead>
+		<tbody id="tableBody">
+			<tr > 
+				<td id="Image" colspan="2" ><center><img height="125" width="125"/><br><a href="#"  style="text-align:center;" id="editPicture" >Edit Picture</a></center></td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Store Name</td>
+					<td id="Name">Store Name</td>
+		
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Store Description</td>
+					<td id="Description">Store Description</td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Store Type</td>
+					<td id="Type">Store Type</td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Store Email</td>
+					<td id="Email">Store Email</td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Store Contact</td>
+					<td id="Contact">Store Contact</td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Store Area</td>
+					<td id="Area">Store Area</td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Store Address</td>
+					<td id="Address">Store Address</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		
+		<!--Table Promo Information -->
+		<table id="tablePromo" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		<thead id="tableHead">
+			<tr>
+				<th id="heading" style="text-align:center;" colspan="2" class="mdl-data-table__cell--non-numeric" ><a href="#"  style="text-align:left;" id="deletePromo" onclick="deletePromo()">Delete Promo</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Promo Information</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"  style="text-align:Right;" id="editPromo" onclick="editPromo()">Edit Promo</a></th>
+			</tr>
+		</thead>
+		<tbody id="tableBody">
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Promo Name</td>
+					<td id="PromoName">Promo Name</td>
+		
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Promo Description</td>
+					<td id="PromoDescription">Promo Description</td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Promo Email</td>
+					<td id="PromoEmail">Promo Email</td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Promo Contact</td>
+					<td id="PromoContact">Promo Contact</td>
+			</tr>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">Promo Area</td>
+					<td id="PromoArea">Promo Area</td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<!-- Add Promo Button -->
+		<div id="addBtnPromo">
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+			<i class="material-icons">add</i>
+		</button>
+		<p id="textAddPromo">Add Promo</p>
+		</div>
+		
+		<!-- Map Display -->
+		<div id="mapActivity" style="padding:10px">
+            <div id="map"></div>
+        </div>
+		
+		<!-- Promo Dialog -->
+	<div id="PromoDialog" class="mdl-dialog">
+			<a href="index1.html" style="align:left;color:#009688;"><i class="material-icons">&#xE5C4;</i></a><h4 class="mdl-dialog__title" style="text-align:center">Promo Form</h4>
+				<div class="mdl-dialog__content">
+					<p id="saveError" ></p>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="ProName">
+						<label class="mdl-textfield__label" for="sample3">Promo Name</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="ProDesc">
+						<label class="mdl-textfield__label" for="sample3">Promo Description</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="ProEmail">
+						<label class="mdl-textfield__label" for="sample3">Promo Email</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="ProContact">
+						<label class="mdl-textfield__label" for="sample4">Contact(Format:03XX must be 11 digits)</label>
+						<span class="mdl-textfield__error">Input is not a number!</span>
+					</div>
+					<div id="Areadiv">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<h5 id="headPromo">Promo Area</h5>
+						<div id="PromoOpt">
+						<select name= "Area" id="ProArea">
+							<option value = "Saddar"> Saddar </option>
+							<option value = "Nazimabad"> Nazimabad </option>
+							<option value = "Clifton"> Clifton </option>
+							<option value = "Defence"> Defence </option>
+							<option value = "Garden"> Garden </option>
+							<option value = "PECHS"> PECHS </option>
+							<option value = "Shahra-e-Faisal"> Shahra-e-Faisal </option>
+							<option value = "Korangi"> Korangi </option>
+						</select>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="mdl-dialog__actions">
+					<!-- Colored raised button -->
+						<button id="saveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+						Save
+						</button>
+					<div id="saveProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+				</div>
+	</div>
+	
+	<!-- EditPromo Dialog -->
+	<div id="EditPromoDialog" class="mdl-dialog">
+			<a href="index1.html" style="align:left;color:#009688;"><i class="material-icons">&#xE5C4;</i></a><p class="mdl-dialog__title" style="text-align:center;font-size:20px;"><b>Edit Promo Form</b></p>
+				<div class="mdl-dialog__content">
+					<p id="saveEditError" ></p>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Promo Name</label>
+						<input class="mdl-textfield__input" type="text" id="EProName">
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Promo Description</label>
+						<input class="mdl-textfield__input" type="text" id="EProDesc">
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Promo Email</label>
+						<input class="mdl-textfield__input" type="text" id="EProEmail">
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Promo Contact</label>
+						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="EProContact">
+						<span class="mdl-textfield__error">Input is not a number!</span>
+					</div>
+					<div id="Areadiv">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<h5 id="headPromo">Promo Area</h5>
+						<div id="PromoOpt">
+						<select name= "Area" id="EProArea">
+							<option value = "Saddar"> Saddar </option>
+							<option value = "Nazimabad"> Nazimabad </option>
+							<option value = "Clifton"> Clifton </option>
+							<option value = "Defence"> Defence </option>
+							<option value = "Garden"> Garden </option>
+							<option value = "PECHS"> PECHS </option>
+							<option value = "Shahra-e-Faisal"> Shahra-e-Faisal </option>
+							<option value = "Korangi"> Korangi </option>
+						</select>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="mdl-dialog__actions">
+					<!-- Colored raised button -->
+						<button id="saveEditBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+						Save
+						</button>
+					<div id="saveEditProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+				</div>
+	</div>
+	
+	<!-- Profile Dialog -->
+	<div id="signUpDialog" class="mdl-dialog">
+			<a href="index1.html" style="align:left;color:#009688;"><i class="material-icons">&#xE5C4;</i></a><h4 class="mdl-dialog__title" style="text-align:center;">Profile Info</h4>
+				<div class="mdl-dialog__content">
+						<p id="signUpError"></p>
+					<div>	
+						<input type="hidden" id="Hidden"  > 
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="username">
+						<label class="mdl-textfield__label" for="sample3">Name</label>
+					</div>
+					<div id="Areadiv">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<h5 id="headPromo">Area</h5>
+						<div id="PromoOpt">
+						<select name= "Area" id="userarea">
+							<option value = "Saddar"> Saddar </option>
+							<option value = "Nazimabad"> Nazimabad </option>
+							<option value = "Clifton"> Clifton </option>
+							<option value = "Defence"> Defence </option>
+							<option value = "Garden"> Garden </option>
+							<option value = "PECHS"> PECHS </option>
+							<option value = "Shahra-e-Faisal"> Shahra-e-Faisal </option>
+							<option value = "Korangi"> Korangi </option>
+						</select>
+						</div>
+					</div>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="usercontact">
+						<label class="mdl-textfield__label" for="sample4">Contact(Format:03XX must be 11 digits)</label>
+						<span class="mdl-textfield__error">Input is not a number!</span>
+					</div>
+				</div>
+				<div class="mdl-dialog__actions">
+					<!-- Colored raised button -->
+						<button id="submitClick" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+						Submit
+						</button>
+					<div id="signUpProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+				</div>
+	</div>
+	
+		<!--Add Store Dialog -->
+	<div id="StoreDialog" class="mdl-dialog">
+			<a href="index1.html" style="align:left;color:#009688;"><i class="material-icons">&#xE5C4;</i></a><h4 class="mdl-dialog__title" style="text-align:center">Store Form</h4>
+				<div class="mdl-dialog__content">
+					<p id="storeSaveError" ></p>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="StoreName">
+						<label class="mdl-textfield__label" for="sample3">Store Name</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="StoreDesc">
+						<label class="mdl-textfield__label" for="sample3">Store Description</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="StoreEmail">
+						<label class="mdl-textfield__label" for="sample3">Store Email</label>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="StoreContact">
+						<label class="mdl-textfield__label" for="sample4">Contact(Format:03XX must be 11 digits)</label>
+						<span class="mdl-textfield__error">Input is not a number!</span>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="StoreAdd">
+						<label class="mdl-textfield__label" for="sample3">Store Address</label>
+					</div>
+					<div id="Areadiv">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<h5 id="headPromo">Store Area</h5>
+						<div id="PromoOpt">
+						<select name= "Area" id="StoreArea">
+							<option value = "Saddar"> Saddar </option>
+							<option value = "Nazimabad"> Nazimabad </option>
+							<option value = "Clifton"> Clifton </option>
+							<option value = "Defence"> Defence </option>
+							<option value = "Garden"> Garden </option>
+							<option value = "PECHS"> PECHS </option>
+							<option value = "Shahra-e-Faisal"> Shahra-e-Faisal </option>
+							<option value = "Korangi"> Korangi </option>
+						</select>
+						</div>
+					</div>
+					</div>
+					<div id="Areadiv">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<h5 id="headPromo">Store Type</h5>
+						<div id="PromoOpt">
+						<select name= "Area" id="StoreType">
+							<option value = "Food"> Food </option>
+							<option value = "Hardware"> Hardware </option>
+							<option value = "Electronic"> Electronic </option>
+							<option value = "OddStore"> OddStore </option>
+							<option value = "Bank"> Bank </option>
+							<option value = "PetrolPump"> PetrolPump </option>
+							<option value = "Cloths"> Cloths </option>
+							<option value = "Other"> Other </option>
+						</select>
+						</div>
+					</div>
+					</div>
+					<div>
+					<label class="upload-group">
+						<b>Upload Picture</b>
+						<input type="file" class="upload-group" id="file">
+						<input type="hidden" id="url" >
+					</label>
+					<button type="button" class="btn btn-primary" id="uploadButton" onclick="uploadfile()" >SUBMIT</button>
+					</div>
+					
+					<br>
+					<p><button onclick="geoFindMe()">Get Longitude and Latitude</button></p>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<p>Latitude</p>
+						<input class="mdl-textfield__input" type="text" id="lat" readonly>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<p>Longitude</p>
+						<input class="mdl-textfield__input" type="text" id="long" readonly>
+					</div>
+					<div id="mapGet">
+					<center><div id="out"></div></center>
+					</div>
+				</div>
+				<div class="mdl-dialog__actions">
+					<!-- Colored raised button -->
+						<button id="storeSaveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+						Save
+						</button>
+					<div id="storeSaveProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+				</div>
+	</div>
+	
+	<!-- Edit Store Dialog -->
+	<div id="EditStoreDialog" class="mdl-dialog">
+			<a href="index1.html" style="align:left;color:#009688;"><i class="material-icons">&#xE5C4;</i></a><p class="mdl-dialog__title" style="text-align:center;font-size:20px;"> <b>Edit Store Form</b></p>
+				<div class="mdl-dialog__content">
+					<p id="storeEditSaveError" ></p>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Store Name</label>
+						<input class="mdl-textfield__input" type="text" id="EditStoreName">
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Store Description</label>
+						<input class="mdl-textfield__input" type="text" id="EditStoreDesc">
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Store Email</label>
+						<input class="mdl-textfield__input" type="text" id="EditStoreEmail">
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Contact</label>
+						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="EditStoreContact">
+						<span class="mdl-textfield__error">Input is not a number!</span>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<label>Store Address</label>
+						<input class="mdl-textfield__input" type="text" id="EditStoreAdd">
+					</div>
+					<div id="Areadiv">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<h5 id="headPromo">Store Area</h5>
+						<div id="PromoOpt">
+						<select name= "Area" id="EditStoreArea">
+							<option value = "Saddar"> Saddar </option>
+							<option value = "Nazimabad"> Nazimabad </option>
+							<option value = "Clifton"> Clifton </option>
+							<option value = "Defence"> Defence </option>
+							<option value = "Garden"> Garden </option>
+							<option value = "PECHS"> PECHS </option>
+							<option value = "Shahra-e-Faisal"> Shahra-e-Faisal </option>
+							<option value = "Korangi"> Korangi </option>
+						</select>
+						</div>
+					</div>
+					</div>
+					<div id="Areadiv">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<h5 id="headPromo">Store Type</h5>
+						<div id="PromoOpt">
+						<select name= "Area" id="StoreType">
+							<option value = "Food"> Food </option>
+							<option value = "Hardware"> Hardware </option>
+							<option value = "Electronic"> Electronic </option>
+							<option value = "OddStore"> OddStore </option>
+							<option value = "Bank"> Bank </option>
+							<option value = "PetrolPump"> PetrolPump </option>
+							<option value = "Cloths"> Cloths </option>
+							<option value = "Other"> Other </option>
+						</select>
+						</div>
+					</div>
+					</div>
+					<div>
+					<p><button onclick="geoFindMe1()">Get Longitude and Latitude</button></p>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<p>Latitude</p>
+						<input class="mdl-textfield__input" type="text" id="Elat" readonly>
+					</div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<p>Longitude</p>
+						<input class="mdl-textfield__input" type="text" id="Elong" readonly>
+					</div>
+					<div id="EmapGet">
+					<center><div id="Eout"></div></center>
+					<center><div id="map1"></div></center>
+					</div>
+				</div>
+				<div class="mdl-dialog__actions">
+					<!-- Colored raised button -->
+						<button id="storeEditSaveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+						Save
+						</button>
+					<div id="storeEditSaveProgress" class="mdl-spinner mdl-js-spinner is-active"></div>
+				</div>
+	</div>	
+	</div>
+	
+	<!-- Edit Picture Dialog -->
+	<div id="editPic"class="mdl-dialog">
+			<a href="index1.html" style="align:left;color:#009688;"><i class="material-icons">&#xE5C4;</i></a><p class="mdl-dialog__title" style="text-align:center;font-size:20px;"> <b>Edit Picture Form</b></p>
+				<div class="mdl-dialog__content">
+					<p id="errorUpdate"></p>
+					<label class="upload-group">
+						<b>Upload Picture</b>
+						<input type="file" class="upload-group" id="fileedit">
+						<input type="hidden" id="urlpicedit" >
+					</label>
+					<button type="button" class="btn btn-primary" id="uploadeditButton" onclick="uploadeditfile()" >Submit Picture</button>
+					<button id="picEditSaveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+						Save
+					</button>
+					<div id="progressPic" class="mdl-spinner mdl-js-spinner is-active"></div>
+					</div>
+	</div>
+
+	
+	<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyA7Oy52aoXSYIOwxHhmV3sBxeuJCMEOhUQ",
+			authDomain: "guideus-9e0c7.firebaseapp.com",
+			databaseURL: "https://guideus-9e0c7.firebaseio.com",
+			projectId: "guideus-9e0c7",
+			storageBucket: "guideus-9e0c7.appspot.com",
+			messagingSenderId: "524654396053"
+		};
+		firebase.initializeApp(config);
+	</script>
+	
+        <script src="https://maps.googleapis.com/maps/api/js?AIzaSyC6v5-2uaq_wusHDktM9ILcqIrlPtnZgEk"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script src="index.js"></script>
+	
+</body>
+
+</html>

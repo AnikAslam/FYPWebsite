@@ -1,0 +1,209 @@
+* {
+	box-sizing : border-box;
+	font-family: 'Roboto', sans-serif;
+	outline: none;
+}
+
+.button-right-icon {
+	margin-left: 10px;
+}
+
+/*LOGIN SECTION */
+.login-cover {
+	background: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 800;  
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#loginProgress {
+	display: none;
+}
+
+#signin {
+	text-align: center;
+	font-size : 30px;
+	margin-top: 10px;
+	color: #008080;
+}
+
+#loginError {
+	display: none;
+	text-align: center;
+	color: #ff0000;
+}
+
+#addBtn {
+	display: none;
+	margin: auto;
+}
+
+#PromoDialog {
+	display: none;
+	margin: auto;
+}
+
+#saveError {
+	display: none;
+	text-align: center;
+	color: #ff0000;
+}
+
+#errorUpdate {
+	display: none;
+	text-align: center;
+	color: #ff0000;
+}
+
+#signUpError {
+	display: none;
+	text-align: center;
+	color: #ff0000;
+}
+
+#addBtnPromo {
+		display:none;
+		margin-left: 520px;
+		vertical-align: top;
+		margin-top: -330px;
+		margin-right: 600px;
+}
+
+#PromoOpt {
+	margin-top: 10px;
+}
+
+#Areadiv {
+	margin-top: -30px;
+}
+
+
+#progressPic {
+	display: none;
+}
+
+#StoreDialog {
+	display: none;
+	margin: auto;
+	width: 400px;
+	height: 5000px;
+}
+
+#map { 
+			margin-top: -300px;
+			margin-left : 850px;
+            height: 500px;    
+            width: 300px;            
+          } 
+
+#mapActivity {
+	display: none;
+}
+
+#signUpDialog {
+	margin: auto;
+	margin-top: 50px;
+}
+
+#signUpProgress {
+	display: none;
+}
+
+#tableStore {
+	display: none;
+	text-align: center;
+	margin-left: 25px ;
+	margin-right: 970px;
+	margin-top: 20px;
+}
+
+#textAddPromo {
+	margin-left: -5px;
+	color: black;
+}
+
+#textAddStore {
+	margin-left: -5px;
+	color: black;
+}
+
+#tablePromo {
+		display:none;
+		margin-left: 450px;
+		vertical-align: top;
+		margin-top: -530px;
+		margin-right: 530px;
+}
+
+#heading {
+	color: blue;
+}
+
+#mapGet {
+	height: 240px;
+	width: 300px;
+}
+
+#EmapGet {
+	height: 240px;
+	width: 300px;
+}
+
+#out {
+	height: 150px;
+}
+
+#Eout {
+	height: 150px;
+}
+
+#map1 {
+	height: 150px;
+}
+
+#uploadButton {
+	display: none;
+}
+
+#tabelBody {
+	text-align: center;
+}
+
+#EditPromoDialog {
+	display: none;
+	margin: auto;
+}
+
+#editPic {
+	display: none;
+	margin: auto;
+}
+
+
+#EditStoreDialog {
+	display: none;
+	margin: auto;
+	width: 400px;
+	height: 5000px;
+}
+
+#tableHead {
+	text-align: center;
+}
+
+#storeSaveError {
+	text-align: center;
+	color: #ff0000;
+	display: none;
+}
+
+#storeSaveProgress {
+	display: none;
+}
+
